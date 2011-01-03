@@ -1,9 +1,8 @@
 # ignore files created automatically by Visual Studio
 *.ncb
 *.suo
-*.sln
-*.vcproj*
 *.lib
+*.vcproj*
 Debug*/
 Release*/
 
