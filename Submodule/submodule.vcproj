@@ -338,14 +338,6 @@
 			>
 		</File>
 		<File
-			RelativePath=".\Submodule.rc"
-			>
-		</File>
-		<File
-			RelativePath=".\Submodule.rc.h"
-			>
-		</File>
-		<File
 			RelativePath=".\Version.h"
 			>
 		</File>
