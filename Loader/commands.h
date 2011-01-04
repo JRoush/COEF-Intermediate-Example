@@ -18,7 +18,7 @@ extern OBSECommandTableInterface*   g_cmdIntfc;
 // global submodule interface
 extern SubmoduleInterface*        g_submoduleInfc;
 
-// opcodes
+// opcodes - this is not an officially assigned base, use for testing purposes only!
 const int OPCODEBASE        = 0x5000;
 
 // registers new script commands

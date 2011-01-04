@@ -12,13 +12,7 @@ void SubmoduleInterface::COEFTest(TESObjectREFR* thisObj, const char* argA, cons
 const char* SubmoduleInterface::Description()
 {
     static char buffer[0x100];
-    sprintf_s(buffer,sizeof(buffer),"COEF Example Plugin, v%i.%i beta%i",MAJOR_VERSION,MINOR_VERSION,BETA_VERSION);
-    _MESSAGE("Interface Description Queried: '%s'",buffer);
+    sprintf_s(buffer,sizeof(buffer), SOLUTIONNAME ", v%i.%i beta%i", MAJOR_VERSION,MINOR_VERSION,BETA_VERSION);
     return buffer;
-}
-extern OutputLog& gLog; // defined in main submodule file
-OutputLog& SubmoduleInterface::OutputLog()
-{
-    return gLog;
 }
 

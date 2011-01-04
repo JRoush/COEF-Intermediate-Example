@@ -5,7 +5,6 @@
 #pragma once
 
 class   TESObjectREFR;      // COEF/API/TESForms/TESObjectREFR.h
-class   OutputLog;          // COEF/Utilities/OutputLog.h
 
 class SubmoduleInterface
 {
@@ -14,5 +13,4 @@ public:
     virtual /*00*/ void             COEFTest(TESObjectREFR* thisObj, const char* argA, const char* argB, const char* argC);
     // internals
     virtual /*04*/ const char*      Description();  // prints & returns a short description of this plugin
-    virtual /*04*/ OutputLog&       OutputLog();    // returns, by reference, the global output handler for the submodule
 };

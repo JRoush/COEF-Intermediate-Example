@@ -48,15 +48,16 @@ void Register_Commands()
 void CSEPrintCallback(const char* message, const char* prefix)
 {/* 
     called whenever output is provided to CSE console, if present
-    commands recoginzed by this parser take the form 'COEFEX commandName [args...]'
+    commands recognized by this parser take the form 'solutionname commandName [args...]'
+    the only command for this example plugin is 'Description', which prints a description of the plugin to the log
 */
-
-    if (!message || strncmp(message,"coefex",6) != 0 || message[6] == 0) return; // output is not a command targeted to this plugin
-    message += 7;
+    const char tag[] = SOLUTIONNAME " "; // CSE console commands to this plugin must begin with this 'tag'
+    if (!message || _strnicmp(message,tag,sizeof(tag)-1) != 0) return; // output is not a command targeted to this plugin
+    message += sizeof(tag)-1;
     _DMESSAGE("%s %s",prefix,message);
     
-    if (stricmp(message,"DESCRIPTION") == 0)    // 'Description' command
+    if (_stricmp(message,"DESCRIPTION") == 0)    // 'Description' command
     {
-        g_submoduleInfc->Description();
+        _MESSAGE("%s",g_submoduleInfc->Description());
     }
 }
