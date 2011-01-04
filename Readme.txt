@@ -1,3 +1,17 @@
+The 'COEF Intermediate Example' plugin demonstrates the same concepts as the Basic example plugin:
+-   "1 loader, 2 submodule" project structure
+-   Loading ExportInjector to enable dynamic linking to Oblivion.exe & TESConstructionSet.exe
+-   Loading a submodule and communicating with it via LoadLibrary() and GetProcAddress()
+-   Separating the execution of script commands from the extraction & validation of arguments
+-   The basic layout for DllMain() & CWinApp
+-   Basic useage of the OutputLog utility
+However, the intermediate example also demonstrates:
+-   Organizing the execution of script commands into a 'submodule interface', along with functions 
+    useful for communicating with the submodule.
+-   Forwarding debugging output to the CSE console and parsing commands entered by the user
+-   Segregating common or bulky code (script command definitions, plugin version info) into seperate files
+-   Serializing plugin data to & from the OBSE cosave
+
 Requirements for Developers:
 ============================
 1.  Common Oblivion Engine Framework
