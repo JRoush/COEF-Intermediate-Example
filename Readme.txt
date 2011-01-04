@@ -14,6 +14,9 @@ Setup Instructions for Developers:
         COEFPATH - the path (relative or absolute) of your COEF directory
         OBSEPATH - the path (relative or absolute) to the OBSE source code directory containing 'Common' and 'OBSE' subdirectories
         OBLIVIONPATH - the path to your Oblivion\ directory
-4.  Create an Oblivion\Data\OBSE\Plugins\COEF_Example folder, and copy the Settings.ini to it from your working directory
-5.  In your working directory, open COEF_Example.sln in Visual Studio and begin development.  You may get an error the first time you
-    compile the solution, compile it at least twice before troubleshooting.
+4.  (Optional) Rename COEF_Example.sln to the project name of your choice.  All internal strings (log file names, plugin name
+    provided to OBSE, etc). should automatically reflect whatever name you choose.
+5.  Navigate to your Oblivion\Data\OBSE\Plugins\ directory and create a new folder called COEF_Example, or whatever name you chose
+    in step 4.  Copy the Settings.ini to this new folder from your working directory.
+6.  Open the solution in Visual Studio and begin development.  You may get an error the first time you compile the code;
+    compile it at least twice before troubleshooting.

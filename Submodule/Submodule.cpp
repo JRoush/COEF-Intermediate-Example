@@ -18,22 +18,22 @@
 /*--------------------------------------------------------------------------------------------*/
 // macro for strings that use "CS" or "Game" depending on compiler state
 #ifdef OBLIVION
-    #define DLLNAME(pre,post) (pre ## "Game" ## post)
+    #define TARGETNAME "Game"
 #else
-    #define DLLNAME(pre,post) (pre ## "CS" ## post)
+    #define TARGETNAME "CS"
 #endif
 
 /*--------------------------------------------------------------------------------------------*/
 // global debugging log for the submodule
-HTMLTarget _gLogFile(DLLNAME("Data\\obse\\plugins\\COEF_Example\\COEF_Example.",".log.html"),DLLNAME("COEF_Example.",".Log"));
+HTMLTarget _gLogFile("Data\\obse\\plugins\\" SOLUTIONNAME "\\" SOLUTIONNAME "." TARGETNAME ".log.html", SOLUTIONNAME "." TARGETNAME ".Log");
 OutputLog  _gLog;
 OutputLog& gLog = _gLog;
 
 /*--------------------------------------------------------------------------------------------*/
 // global interfaces and handles
-HMODULE hModule = 0;    // windows module handle ("instance") for this dll
-char    sModuleName[0x100] = {{0}}; // name of this dll
-SubmoduleInterface      g_submoduleIntfc;   // global submodule interface
+HMODULE             hModule = 0;    // windows module handle ("instance") for this dll
+char                sModuleName[0x100] = {{0}}; // name of this dll
+SubmoduleInterface  g_submoduleIntfc;   // global submodule interface
 
 /*--------------------------------------------------------------------------------------------*/
 // submodule initialization
@@ -63,7 +63,7 @@ BOOL WINAPI DllMain(HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
         GetModuleFileName(hModule,sModuleName,sizeof(sModuleName));
         // attach log file to output handle & load rules from ini
         gLog.AttachTarget(_gLogFile);        
-        _gLogFile.LoadRulesFromINI("Data\\obse\\Plugins\\COEF_Example\\Settings.ini",DLLNAME("",".Log"));
+        _gLogFile.LoadRulesFromINI("Data\\obse\\Plugins\\" SOLUTIONNAME "\\Settings.ini", TARGETNAME ".Log");
         // done loading
         _MESSAGE("Attaching Submodule {%p} '%s' ...", hModule, sModuleName); 
         break;
@@ -86,7 +86,7 @@ public:
         GetModuleFileName(hModule,sModuleName,sizeof(sModuleName));
         // attach log file to output handle & load rules from ini
         gLog.AttachTarget(_gLogFile);      
-        _gLogFile.LoadRulesFromINI("Data\\obse\\Plugins\\COEF_Example\\Settings.ini",DLLNAME("",".Log"));
+        _gLogFile.LoadRulesFromINI("Data\\obse\\Plugins\\" SOLUTIONNAME "\\Settings.ini", TARGETNAME ".Log");
         // done loading
         _MESSAGE("Initializing Submodule {%p} '%s' ...", hModule, sModuleName); 
         return true;

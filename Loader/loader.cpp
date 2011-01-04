@@ -30,7 +30,7 @@
 
 /*--------------------------------------------------------------------------------------------*/
 // global debugging log for the loader
-HTMLTarget      _gLogFile("Data\\obse\\plugins\\COEF_Example\\COEF_Example.Loader.log.html","COEF_Example.Loader.Log");
+HTMLTarget      _gLogFile("Data\\obse\\plugins\\" SOLUTIONNAME "\\" SOLUTIONNAME ".Loader.log.html", SOLUTIONNAME ".Loader.Log");
 OutputLog       _gLog;
 OutputLog&      gLog = _gLog;
 
@@ -61,7 +61,7 @@ public:
     {
         if (!g_cseConsoleInfc || !g_cseConsoleInfc->PrintToConsole) return;  // bad CSE console interface
         BufferTarget::WriteOutputLine(consoleStyle,time,channel,source,text); // generate output line, without timestamp or source
-        g_cseConsoleInfc->PrintToConsole("COEFEX",LastOutputLine());  // write output line to CSE console
+        g_cseConsoleInfc->PrintToConsole(SOLUTIONNAME,LastOutputLine());  // write output line to CSE console
     }
     // static output style
     OutputStyle  consoleStyle;
@@ -89,10 +89,10 @@ static void LoadCallback(void * reserved)
 			case 'HEAD':    // this is a 'HEAD' record
 				g_serializationIntfc->ReadRecordData(buf, length); // copy record contents into a string buffer & print
 				buf[length] = 0;
-                _DMESSAGE("  HEADER RECORD, Version(%08X): '%s'", version, buf);
+                _DMESSAGE("HEADER RECORD, Version(%08X): '%s'", version, buf);
 				break;
 			default:        // record of unkown type
-                _DMESSAGE("  Record Type[%.4s] Version(%08X) Length(%08X)", &type, version, length);
+                _DMESSAGE("Record Type[%.4s] Version(%08X) Length(%08X)", &type, version, length);
 				break;
 		}
 	}
@@ -121,7 +121,7 @@ void GeneralMessageHandler(OBSEMessagingInterface::Message* msg)
         {
             _VMESSAGE("Attached to CSE console");
             g_submoduleInfc->OutputLog().AttachTarget(_CSETarget);   // attach CSE console target to submodule output log
-            _CSETarget.LoadRulesFromINI("Data\\obse\\Plugins\\COEF_Example\\Settings.ini","CSEConsole.Log"); // load target rules for CSE console
+            _CSETarget.LoadRulesFromINI("Data\\obse\\Plugins\\" SOLUTIONNAME "\\Settings.ini","CSEConsole.Log"); // load target rules for CSE console
             _CSETarget.consoleStyle.includeTime = _CSETarget.consoleStyle.includeSource = false; // setup output style for console
             g_cseConsoleInfc->RegisterCallback(CSEPrintCallback); // register parser for CSE console output
         }
@@ -177,11 +177,11 @@ extern "C" bool _declspec(dllexport) OBSEPlugin_Query(const OBSEInterface* obse,
 {
     // Initialize log file
     gLog.AttachTarget(_gLogFile);   // attach html-formatted log file to loader output handler    
-    _gLogFile.LoadRulesFromINI("Data\\obse\\Plugins\\COEF_Example\\Settings.ini","Loader.Log"); // load rules for loader output from INI
+    _gLogFile.LoadRulesFromINI("Data\\obse\\Plugins\\" SOLUTIONNAME "\\Settings.ini","Loader.Log"); // load rules for loader output from INI
 
 	// fill out plugin info structure
 	info->infoVersion = PluginInfo::kInfoVersion;   // info structure version
-	info->name = "COEF_Example";                    // plugin name
+	info->name = SOLUTIONNAME;                      // plugin name
 	info->version = RECORD_VERSION(0);              // plugin version
     _MESSAGE("OBSE Query (CSMode = %i) v%p (%i.%i beta%i)",obse->isEditor,RECORD_VERSION(0),MAJOR_VERSION,MINOR_VERSION,BETA_VERSION);
 
@@ -211,7 +211,9 @@ extern "C" bool _declspec(dllexport) OBSEPlugin_Query(const OBSEInterface* obse,
     // load submodule 
     // the submodule dll contains the actual "meat" of the plugin, or as much of it as is based on COEF
     // in this example, there are two different submodules to choose from (CS vs Game, see Submodule.cpp for details)
-    const char* modulename = obse->isEditor ? "Data\\obse\\plugins\\COEF_Example\\Submodule.CS.dll" : "Data\\obse\\plugins\\COEF_Example\\Submodule.Game.dll";
+    const char* modulename = obse->isEditor 
+                            ? "Data\\obse\\plugins\\" SOLUTIONNAME "\\Submodule.CS.dll" 
+                            : "Data\\obse\\plugins\\" SOLUTIONNAME "\\Submodule.Game.dll";
     _MESSAGE("Loading Submodule '%s' ...", modulename);
     g_hSubmodule = LoadLibrary(modulename);
     if (g_hSubmodule)

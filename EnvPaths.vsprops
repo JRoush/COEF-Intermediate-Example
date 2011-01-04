@@ -4,6 +4,10 @@
 	Version="8.00"
 	Name="TestProps"
 	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="SOLUTIONNAME=&quot;&quot;$(SolutionName)&quot;&quot;"
+	/>
 	<UserMacro
 		Name="COEFPATH"
 		Value="F:\Game Sources\Elder Scrolls IV Oblivion\My Mods\COEF"
