@@ -86,7 +86,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\COEF_Example\$(TargetFileName)&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\$(SolutionName)\$(TargetFileName)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -163,7 +163,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\COEF_Example\$(TargetFileName)&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\$(SolutionName)\$(TargetFileName)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -237,7 +237,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\COEF_Example\$(TargetFileName)&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\$(SolutionName)\$(TargetFileName)&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -314,7 +314,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\COEF_Example\$(TargetFileName)&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(OBLIVIONPATH)\Data\obse\plugins\$(SolutionName)\$(TargetFileName)&quot;"
 			/>
 		</Configuration>
 	</Configurations>
