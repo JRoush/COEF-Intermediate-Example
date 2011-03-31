@@ -1,8 +1,8 @@
 /*
-    Main unit for OBME submodules.  Handles:
+    Main unit for submodules.  Handles:
     -   Initialization (writing hooks & patches)
     -   global debugging log
-    -   global OBME interface
+    -   global Submodule interface
 
     This example plugin has two submodule DLLs - one for the CS, and one for the game.  
     This is necessary because the game and CS use slightly different definitions for many COEF classes.
